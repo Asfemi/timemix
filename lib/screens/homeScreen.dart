@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:timemix/Logic/Algotests.dart';
+import 'package:timemix/components/activityCard.dart';
+import 'package:timemix/components/placeHoldingContainer.dart';
 import 'package:timemix/customColors.dart';
+import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,43 +13,17 @@ class HomeScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     List<Widget> homeWidgets = [
-      Container(
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(10),
-          height: 50,
-          width: 500,
-          color: Colors.purple),
-      Container(
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(10),
-          height: 50,
-          width: 500,
-          color: Colors.red),
-      Container(
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(10),
-          height: 50,
-          width: 500,
-          color: Colors.yellow),
-      Container(
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(10),
-          height: 50,
-          width: 500,
-          color: Colors.green),
-      Container(
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(10),
-          height: 50,
-          width: 500,
-          color: Colors.blue),
-      Container(
-        margin: EdgeInsets.all(10),
-        padding: EdgeInsets.all(10),
-        height: 50,
-        width: 500,
-        color: Colors.amber,
+      Row(
+        children: const [
+          ActivityCard(),
+          ActivityCard(),
+        ],
       ),
+     const PlaceaholderContainer(),
+     const PlaceaholderContainer(),
+     const PlaceaholderContainer(),
+     const PlaceaholderContainer(),
+      const PlaceaholderContainer(),
     ];
     return Scaffold(
       backgroundColor: CustomColors.grey,
@@ -58,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 title: const Text("heyy",
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.0,
                     )),
@@ -89,9 +67,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 // height: 5,
                 // width: 5,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white,
+                  color: CustomColors.grey,
                 ),
                 child: const Icon(
                   Icons.menu,
@@ -139,22 +117,58 @@ class HomeScreen extends StatelessWidget {
             ), //SliverChildBuildDelegate
           )
         ],
-        // body: Column(
-        //   children: [
-        //     Expanded(
-        //         flex: 20,
-        //         child: Container(
-        //           decoration: const BoxDecoration(
-        //             image: DecorationImage(
-        //               fit: BoxFit.fill,
-        //               image: AssetImage(
-        //                   'lib/assets/nathan-dumlao-5Hl5reICevY-unsplash.jpg',),
-        //             ),
-        //           ),
-        //         )),
-        //     Expanded(flex: 15, child: Container()),
-        //   ],
+      ),
+      floatingActionButtonLocation: ExpandableFab.location,
+      floatingActionButton: ExpandableFab(
+        key: key,
+        // duration: const Duration(seconds: 1),
+        // distance: 60.0,
+        // type: ExpandableFabType.up,
+        // fanAngle: 70,
+        child: const Icon(
+          Icons.add,
+          color: Colors.blue,
+        ),
+        // foregroundColor: Colors.amber,
+        backgroundColor: CustomColors.grey,
+        // closeButtonStyle: const ExpandableFabCloseButtonStyle(
+        //   child: Icon(Icons.abc),
+        //   foregroundColor: Colors.deepOrangeAccent,
+        //   backgroundColor: Colors.lightGreen,
         // ),
+        overlayStyle: ExpandableFabOverlayStyle(
+          // color: Colors.black.withOpacity(0.5),
+          blur: 5,
+        ),
+        children: [
+          FloatingActionButton.small(
+            heroTag: null,
+            child: const Icon(Icons.edit),
+            onPressed: () {
+               //Navigator.of(context).push(
+               //MaterialPageRoute(builder: ((context) => const AlarmHomePage(title: 'alarm shooter',))));
+            },
+          ),
+          FloatingActionButton.small(
+            heroTag: null,
+            child: const Icon(Icons.search),
+            onPressed: () {
+              // Navigator.of(context).push(
+              // MaterialPageRoute(builder: ((context) => const NextPage())));
+            },
+          ),
+          FloatingActionButton.small(
+            heroTag: null,
+            child: const Icon(Icons.share),
+            onPressed: () {
+              // final state = key.currentState;
+              // if (state != null) {
+              //  debugPrint('isOpen:${state.isOpen}');
+              //  state.toggle();
+              // }
+            },
+          ),
+        ],
       ),
     );
   }
