@@ -2,8 +2,10 @@ import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:timemix/screens/homeScreen.dart';
+//import 'package:timemix/screens/homeScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'screens/homeScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
 /// The [SharedPreferences] key to access the alarm fire count.
@@ -22,7 +24,7 @@ SharedPreferences? prefs;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initialiseApp();
+  await Firebase.initializeApp();
 
   // Register the UI isolate's SendPort to allow for communication from the
   // background isolate.

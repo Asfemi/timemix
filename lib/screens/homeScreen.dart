@@ -1,9 +1,8 @@
+import 'package:Schoolclock/components/activityCard.dart';
+import 'package:Schoolclock/components/placeHoldingContainer.dart';
 import 'package:flutter/material.dart';
-import 'package:timemix/Logic/Algotests.dart';
-import 'package:timemix/components/activityCard.dart';
-import 'package:timemix/components/placeHoldingContainer.dart';
-import 'package:timemix/customColors.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+import '../customColors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
