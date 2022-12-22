@@ -10,7 +10,7 @@ import '../../Logic/google_SignIn_Logic.dart';
 
 class SignInScreen extends StatefulWidget {
 //SignInScreen({Key key}) : super(key: key);
-
+static String id = 'signin';
 @override
 _SignInScreenState createState() => _SignInScreenState();
 }
