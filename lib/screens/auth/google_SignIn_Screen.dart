@@ -39,7 +39,7 @@ Widget build(BuildContext context) {
 			mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 			children: [
 			const Text(
-				"GEEKS FOR GEEKS",
+				"SCHOOL CLOCK",
 				style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
 			),
 			Padding(
@@ -56,7 +56,7 @@ Widget build(BuildContext context) {
 						decoration: const BoxDecoration(
 						image: DecorationImage(
 							image:
-								AssetImage('assets/images/googleimage.png'),
+								AssetImage('lib/assets/icons8-google-48.png'),
 							fit: BoxFit.cover),
 						shape: BoxShape.circle,
 						),
