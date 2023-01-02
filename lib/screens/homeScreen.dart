@@ -8,7 +8,10 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   
   static String id = 'home';
-
+    //todo: trim the ui
+    //todo: display user name and image 
+    //in the home page or drawer
+    //todo: setup the api
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +151,11 @@ class HomeScreen extends StatelessWidget {
             heroTag: null,
             child: const Icon(Icons.edit),
             onPressed: () {
+              //TODO: create event
+              //todo: add users to event
+              //todo: edit event
+              //todo: delete event
+              //todo: set notification type.
                //Navigator.of(context).push(
                //MaterialPageRoute(builder: ((context) => const AlarmHomePage(title: 'alarm shooter',))));
             },
