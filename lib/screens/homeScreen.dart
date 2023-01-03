@@ -10,17 +10,19 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   static String id = 'home';
+  //todo: refactor the entire code
   //TODO: get illustrations for the pages
   //todo: trim the ui
   //in the home page or drawer
-  //todo: setup the api
+  //todo: integrate the already setup api
+  //todo: create a proper support email
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     User? user = FirebaseAuth.instance.currentUser;
-
+   //todo: look into app check to avoid excess billings
     List<Widget> homeWidgets = [
       Row(
         children: const [
