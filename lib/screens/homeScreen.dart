@@ -29,6 +29,7 @@ class HomeScreen extends StatelessWidget {
      const PlaceaholderContainer(),
      const PlaceaholderContainer(),
       const PlaceaholderContainer(),
+      
     ];
     return Scaffold(
       backgroundColor: CustomColors.grey,
