@@ -47,7 +47,7 @@ class ActivityCard extends StatelessWidget {
                         Positioned(
                             top: 10,
                             right: 10,
-                            child: Container(
+                             child: Container(
                                 padding: const EdgeInsets.only(
                                   left: 2,
                                   right: 2,

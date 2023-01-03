@@ -1,21 +1,25 @@
+import 'package:Schoolclock/Logic/google_SignIn_Logic.dart';
 import 'package:Schoolclock/components/activityCard.dart';
 import 'package:Schoolclock/components/placeHoldingContainer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import '../customColors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
-  
+
   static String id = 'home';
-    //todo: trim the ui
-    //todo: display user name and image 
-    //in the home page or drawer
-    //todo: setup the api
+  //TODO: get illustrations for the pages
+  //todo: trim the ui
+  //in the home page or drawer
+  //todo: setup the api
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    User? user = FirebaseAuth.instance.currentUser;
 
     List<Widget> homeWidgets = [
       Row(
@@ -24,15 +28,42 @@ class HomeScreen extends StatelessWidget {
           ActivityCard(),
         ],
       ),
-     const PlaceaholderContainer(),
-     const PlaceaholderContainer(),
-     const PlaceaholderContainer(),
-     const PlaceaholderContainer(),
       const PlaceaholderContainer(),
-      
+      const PlaceaholderContainer(),
+      const PlaceaholderContainer(),
+      const PlaceaholderContainer(),
+      const PlaceaholderContainer(),
     ];
     return Scaffold(
       backgroundColor: CustomColors.grey,
+      drawer: Drawer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              height: 200,
+              color: Colors.white60,
+              child: Center(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(user!.photoURL!),
+                  radius: 30,
+                ),
+              ),
+            ),
+            Text(user!.email!),
+            SizedBox(height: 20),
+            Text(user.displayName!),
+            Expanded(child: Container()),
+            TextButton(
+                onPressed: () {
+                  AuthService().signOutFromGoogle();
+                  Navigator.pop(context);
+                },
+                child: Text('Sign-Out'))
+          ],
+        ),
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -157,8 +188,8 @@ class HomeScreen extends StatelessWidget {
               //todo: edit event
               //todo: delete event
               //todo: set notification type.
-               //Navigator.of(context).push(
-               //MaterialPageRoute(builder: ((context) => const AlarmHomePage(title: 'alarm shooter',))));
+              //Navigator.of(context).push(
+              //MaterialPageRoute(builder: ((context) => const AlarmHomePage(title: 'alarm shooter',))));
             },
           ),
           FloatingActionButton.small(
