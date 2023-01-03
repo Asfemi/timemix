@@ -14,7 +14,6 @@ class HomeScreen extends StatelessWidget {
   //todo: refactor the entire code
   //TODO: get illustrations for the pages
   //todo: trim the ui
-  //in the home page or drawer
   //todo: integrate the already setup api
   //todo: create a proper support email
 
