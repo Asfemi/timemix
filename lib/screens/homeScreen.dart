@@ -4,6 +4,7 @@ import 'package:Schoolclock/components/placeHoldingContainer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+import '../components/home_drawer.dart';
 import '../customColors.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,48 +25,12 @@ class HomeScreen extends StatelessWidget {
     User? user = FirebaseAuth.instance.currentUser;
    //todo: look into app check to avoid excess billings
     List<Widget> homeWidgets = [
-      Row(
-        children: const [
-          ActivityCard(),
-          ActivityCard(),
-        ],
-      ),
-      const PlaceaholderContainer(),
-      const PlaceaholderContainer(),
-      const PlaceaholderContainer(),
       const PlaceaholderContainer(),
       const PlaceaholderContainer(),
     ];
     return Scaffold(
       backgroundColor: CustomColors.grey,
-      drawer: Drawer(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              height: 200,
-              color: Colors.white60,
-              child: Center(
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(user!.photoURL!),
-                  radius: 30,
-                ),
-              ),
-            ),
-            Text(user!.email!),
-            SizedBox(height: 20),
-            Text(user.displayName!),
-            Expanded(child: Container()),
-            TextButton(
-                onPressed: () {
-                  AuthService().signOutFromGoogle();
-                  Navigator.pop(context);
-                },
-                child: Text('Sign-Out'))
-          ],
-        ),
-      ),
+      drawer: HomeDrawer(user: user),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -117,37 +82,9 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             actions: const <Widget>[
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: DropdownButton<String>(
-              //     style: TextStyle(
-              //       color: kPrimaryColor,
-              //     ),
-              //     icon: ClipOval(
-              //       child: Image.asset(
-              //         'assets/200h.gif',
-              //         height: 20,
-              //         width: 20,
-              //       ),
-              //     ),
-              //     iconDisabledColor: kPrimaryColor,
-              //     iconEnabledColor: Colors.white,
-              //     value: selectedSport,
-              //     onChanged: (value) {
-              //       setState(() {
-              //         value = selectedSport;
-              //       });
-              //     },
-              //     items: getDropdownItem(),
-              //   ),
-              // ),
+             
             ],
-            // shape: const RoundedRectangleBorder(
-            //   borderRadius: BorderRadius.only(
-            //     bottomLeft: Radius.circular(30),
-            //     bottomRight: Radius.circular(30),
-            //   ),
-            // ),
+            
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
