@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   static String id = 'home';
-  //todo: refactor the entire code
+  //todo: restructure the entire code
   //TODO: get illustrations for the pages
   //todo: trim the ui
   //todo: integrate the already setup api
