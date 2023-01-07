@@ -1,13 +1,14 @@
 
+import 'package:flutter/material.dart';
+import 'package:googleapis/calendar/v3.dart' as cal;
+import 'package:googleapis_auth/auth.dart';
+import 'package:googleapis_auth/auth_io.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:Schoolclock/constants.dart';
 import 'package:Schoolclock/screens/auth/google_SignIn_Screen.dart';
 import 'package:Schoolclock/screens/splashScreen.dart';
-import 'package:Schoolclock/secrets.dart';
-import 'package:flutter/material.dart';
-import 'package:googleapis_auth/auth.dart';
-import 'package:googleapis/calendar/v3.dart' as cal;
-import 'package:googleapis_auth/auth_io.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:Schoolclock/util/secrets.dart';
 //import 'package:timemix/screens/homeScreen.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'calendar_client.dart';

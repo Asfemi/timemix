@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-
-import 'model/eventInfo.dart';
+import '../model/eventInfo.dart';
 
 final CollectionReference mainCollection = FirebaseFirestore.instance.collection('event');
 //todo: create a proper name(with naming rules and all)
