@@ -15,28 +15,29 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 // Define a function that retrieves and displays a list and its subscribers
-Future<void> displayList(String listId, BuildContext context) async {
-  // Get a reference to the list document
+Future<Scaffold> displayList(String listId, BuildContext context) async {
+  //Get a reference to the list document
   DocumentSnapshot listSnapshot = await FirebaseFirestore.instance.collection('lists').doc(listId).get();
   
-  // Get the list data
-  String listName = listSnapshot.data['name'];
-  String listOwner = listSnapshot.data['owner'];
-  List<String> listSubscribers = listSnapshot.data['subscribers'];
+ // Get the list data
+  String listName = listSnapshot['name'];
+ String listOwner = listSnapshot['owner'];
+  List<String> listSubscribers = listSnapshot['subscribers'];
   
-  // Retrieve and display the user documents for the subscribers
-  List<Widget> subscriberCards = [];
+  //Retrieve and display the user documents for the subscribers
+ List<Widget> subscriberCards = [];
   for (String userId in listSubscribers) {
-    DocumentSnapshot userSnapshot = await FirebaseFirestore.instance.collection('users').document(userId).get();
-    subscriberCards.add(
+   DocumentSnapshot userSnapshot = await FirebaseFirestore.instance.collection('users').doc(userId).get();
+   userSnapshot.get('name');
+   subscriberCards.add(
       Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(userSnapshot.data['name'], style: Theme.of(context).textTheme.headline6),
-              Text(userSnapshot.data['email'], style: Theme.of(context).textTheme.subtitle1),
+              Text(userSnapshot['name'], style: Theme.of(context).textTheme.headline6),
+              Text(userSnapshot['email'], style: Theme.of(context).textTheme.subtitle1),
             ],
           ),
         ),
@@ -44,7 +45,7 @@ Future<void> displayList(String listId, BuildContext context) async {
     );
   }
   
-  // Use a Scaffold widget to display the list data and subscriber cards in the app's user interface
+ // Use a Scaffold widget to display the list data and subscriber cards in the app's user interface
   return Scaffold(
     appBar: AppBar(title: Text(listName)),
     body: Column(
