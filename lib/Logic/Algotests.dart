@@ -9,6 +9,61 @@
 // //TODO: set up calender event picker
 //
 // //TODO: show events in time table format
+
+// Import the Cloud Firestore package and Flutter widgets
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+
+// Define a function that retrieves and displays a list and its subscribers
+Future<void> displayList(String listId, BuildContext context) async {
+  // Get a reference to the list document
+  DocumentSnapshot listSnapshot = await FirebaseFirestore.instance.collection('lists').doc(listId).get();
+  
+  // Get the list data
+  String listName = listSnapshot.data['name'];
+  String listOwner = listSnapshot.data['owner'];
+  List<String> listSubscribers = listSnapshot.data['subscribers'];
+  
+  // Retrieve and display the user documents for the subscribers
+  List<Widget> subscriberCards = [];
+  for (String userId in listSubscribers) {
+    DocumentSnapshot userSnapshot = await FirebaseFirestore.instance.collection('users').document(userId).get();
+    subscriberCards.add(
+      Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(userSnapshot.data['name'], style: Theme.of(context).textTheme.headline6),
+              Text(userSnapshot.data['email'], style: Theme.of(context).textTheme.subtitle1),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  
+  // Use a Scaffold widget to display the list data and subscriber cards in the app's user interface
+  return Scaffold(
+    appBar: AppBar(title: Text(listName)),
+    body: Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('Owner: $listOwner', style: Theme.of(context).textTheme.subtitle1),
+        ),
+        Expanded(
+          child: ListView(
+            children: subscriberCards,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+
 //
 // // ignore_for_file: public_member_api_docs
 //
