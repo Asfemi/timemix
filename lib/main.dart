@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:googleapis/calendar/v3.dart' as cal;
-import 'package:googleapis_auth/auth.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:url_launcher/url_launcher.dart';
 
