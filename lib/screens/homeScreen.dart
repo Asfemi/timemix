@@ -2,6 +2,7 @@ import 'package:Schoolclock/Logic/google_SignIn_Logic.dart';
 import 'package:Schoolclock/components/activityCard.dart';
 import 'package:Schoolclock/components/placeHoldingContainer.dart';
 import 'package:Schoolclock/model/eventInfo.dart';
+import 'package:Schoolclock/screens/create_event_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:intl/intl.dart';
 import '../components/home_drawer.dart';
 import '../customColors.dart';
 import '../util/storage.dart';
+import 'edit_events_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
       const PlaceaholderContainer(),
     ];
     return Scaffold(
-      backgroundColor: CustomColors.grey,
+      backgroundColor: CustomColor.grey,
       drawer: HomeDrawer(user: user),
       appBar: AppBar(
         elevation: 0,
@@ -64,7 +66,7 @@ class HomeScreen extends StatelessWidget {
           color: Colors.blue,
         ),
         // foregroundColor: Colors.amber,
-        backgroundColor: CustomColors.grey,
+        backgroundColor: CustomColor.grey,
         // closeButtonStyle: const ExpandableFabCloseButtonStyle(
         //   child: Icon(Icons.abc),
         //   foregroundColor: Colors.deepOrangeAccent,
@@ -79,13 +81,14 @@ class HomeScreen extends StatelessWidget {
             heroTag: null,
             child: const Icon(Icons.edit),
             onPressed: () {
+              
               //TODO: create event
               //todo: add users to event
               //todo: edit event
               //todo: delete event
               //todo: set notification type.
-              //Navigator.of(context).push(
-              //MaterialPageRoute(builder: ((context) => const AlarmHomePage(title: 'alarm shooter',))));
+              Navigator.of(context).push(
+              MaterialPageRoute(builder: ((context) =>  CreateEventScreen())));
             },
           ),
           FloatingActionButton.small(
@@ -142,12 +145,12 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 16.0),
                         child: InkWell(
                           onTap: () {
-                            //todo: add route to the edit screen here
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(
-                            //     builder: (context) => EditScreen(event: event),
-                            //   ),
-                            // );
+                            //todo: look into better routing solutions
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => EditEventScreen(event: event),
+                              ),
+                            );
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
