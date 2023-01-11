@@ -89,7 +89,6 @@ class _SplashScreenState extends State<SplashScreen> {
       showLoader: true,
       loaderColor: kPrimaryColor,
       // loadingText: const Text("Loading..."),
-      //TODO: set up a proper route here
       navigator: AuthService().handleAuthState(),
       durationInSeconds: 1,
     );
