@@ -65,7 +65,9 @@ Future<Scaffold> displayList(String listId, BuildContext context) async {
 }
 
 ////set two here
-// import 'dart:async';
+//TODO google sign in for api code example
+class GoogleX {
+  // import 'dart:async';
 
 // import 'package:extension_google_sign_in_as_googleapis_auth/extension_google_sign_in_as_googleapis_auth.dart';
 // import 'package:flutter/material.dart';
@@ -220,10 +222,11 @@ Future<Scaffold> displayList(String listId, BuildContext context) async {
 //         ));
 //   }
 // }
+}
 
-//
-// // ignore_for_file: public_member_api_docs
-//
+//TODO shared peferences code
+class Shared_PrefrencesX {
+  
 // import 'dart:developer' as developer;
 // import 'dart:isolate';
 // import 'dart:math';
@@ -245,38 +248,42 @@ Future<Scaffold> displayList(String listId, BuildContext context) async {
 // /// Global [SharedPreferences] object.
 // SharedPreferences? prefs;
 //
-// // Future<void> main() async {
-// //   WidgetsFlutterBinding.ensureInitialized();
-//
-// //   // Register the UI isolate's SendPort to allow for communication from the
-// //   // background isolate.
-// //   IsolateNameServer.registerPortWithName(
-// //     port.sendPort,
-// //     isolateName,
-// //   );
-// //   prefs = await SharedPreferences.getInstance();
-// //   if (!prefs!.containsKey(countKey)) {
-// //     await prefs!.setInt(countKey, 0);
-// //   }
-//
-// //   //runApp(const AlarmManagerExampleApp());
-// // }
-//
-// // /// Example app for Espresso plugin.
-// // class AlarmManagerExampleApp extends StatelessWidget {
-// //   const AlarmManagerExampleApp({Key? key}) : super(key: key);
-//
-// //   // This widget is the root of your application.
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return const MaterialApp(
-// //       title: 'Flutter Demo',
-// //       home: _AlarmHomePage(title: 'Flutter Demo Home Page'),
-// //     );
-// //   }
-// // }
-//
-// class AlarmHomePage extends StatefulWidget {
+// Future<void> main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+
+//   // Register the UI isolate's SendPort to allow for communication from the
+//   // background isolate.
+//   IsolateNameServer.registerPortWithName(
+//     port.sendPort,
+//     isolateName,
+//   );
+//   prefs = await SharedPreferences.getInstance();
+//   if (!prefs!.containsKey(countKey)) {
+//     await prefs!.setInt(countKey, 0);
+//   }
+
+//   //runApp(const AlarmManagerExampleApp());
+// }
+
+// /// Example app for Espresso plugin.
+// class AlarmManagerExampleApp extends StatelessWidget {
+//   const AlarmManagerExampleApp({Key? key}) : super(key: key);
+
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       title: 'Flutter Demo',
+//       home: _AlarmHomePage(title: 'Flutter Demo Home Page'),
+//     );
+//   }
+// }
+
+}
+
+//TODO alarm home page   
+class AlarmX {
+  // class AlarmHomePage extends StatefulWidget {
 //   const AlarmHomePage({Key? key, required this.title}) : super(key: key);
 //   final String title;
 //
@@ -377,3 +384,4 @@ Future<Scaffold> displayList(String listId, BuildContext context) async {
 //     );
 //   }
 // }
+}
