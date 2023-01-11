@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:Schoolclock/screens/homeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:googleapis/calendar/v3.dart' as cal;
 //function to implement the google signin
 
 // // creating firebase instance
@@ -50,7 +51,10 @@ class AuthService {
   SignInWithGoogle() async {
     //triger the authentication flow
     final GoogleSignInAccount? googleUser =
-        await GoogleSignIn(scopes: <String>["email"]).signIn();
+        await GoogleSignIn(
+          scopes: <String>["email"]
+            //cal.CalendarApi.calendarScope
+          ).signIn();
 
     //obtain the auth details from the request
     final GoogleSignInAuthentication googleAuth =
