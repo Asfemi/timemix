@@ -77,6 +77,7 @@ class HomeScreen extends StatelessWidget {
           blur: 5,
         ),
         children: [
+          //edit event screen
           FloatingActionButton.small(
             heroTag: null,
             child: const Icon(Icons.edit),
@@ -329,7 +330,7 @@ class HomeScreen extends StatelessWidget {
       //       ),
       //       actions: const <Widget>[
              
-      //       ],
+      //      ],
             
       //     ),
       //     SliverList(
