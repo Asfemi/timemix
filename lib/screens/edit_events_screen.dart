@@ -228,12 +228,12 @@ class _EditEventScreenState extends State<EditEventScreen> {
                   },
             //color: Colors.white,
             child: isDeletionInProgress
-                ? SizedBox(
+                ? const SizedBox(
                     height: 28,
                     width: 28,
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
-                      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
                     ),
                   )
                 : const Text(
@@ -312,7 +312,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: new InputDecoration(
+                      decoration: InputDecoration(
                         disabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           borderSide:
@@ -393,7 +393,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: new InputDecoration(
+                      decoration: InputDecoration(
                         disabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           borderSide:
@@ -474,7 +474,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: new InputDecoration(
+                      decoration: InputDecoration(
                         disabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           borderSide:
@@ -567,7 +567,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: new InputDecoration(
+                      decoration: InputDecoration(
                         disabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           borderSide: BorderSide(color: Colors.grey, width: 1),
@@ -657,7 +657,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: new InputDecoration(
+                      decoration: InputDecoration(
                         disabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           borderSide: BorderSide(color: Colors.grey, width: 1),
@@ -739,7 +739,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: new InputDecoration(
+                      decoration: InputDecoration(
                         disabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           borderSide: BorderSide(color: Colors.grey, width: 1),
@@ -856,7 +856,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                               fontWeight: FontWeight.bold,
                               letterSpacing: 0.5,
                             ),
-                            decoration: new InputDecoration(
+                            decoration: InputDecoration(
                               disabledBorder: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10.0)),
@@ -1118,13 +1118,13 @@ class _EditEventScreenState extends State<EditEventScreen> {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
                           child: isDataStorageInProgress
-                              ? SizedBox(
+                              ? const SizedBox(
                                   height: 28,
                                   width: 28,
                                   child: CircularProgressIndicator(
                                     strokeWidth: 2,
                                     valueColor:
-                                        new AlwaysStoppedAnimation<Color>(
+                                        AlwaysStoppedAnimation<Color>(
                                             Colors.white),
                                   ),
                                 )
