@@ -105,21 +105,21 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
   }
 
   String _validateTitle(String value) {
-    if (value != null) {
-      value = value.trim();
+    if (value != 'null') {
       if (value.isEmpty) {
         return 'Title can\'t be empty';
       }
+      return value = value.trim();
+      
     } else {
       return 'Title can\'t be empty';
     }
 
-    return 'null';
+   //return 'null';
   }
 
   String _validateEmail(String value) {
-    if (value != null) {
-      value = value.trim();
+    if (value != 'null') {
 
       if (value.isEmpty) {
         return 'Can\'t add an empty email';
@@ -133,11 +133,15 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
           }
         }
       }
+
+      return value = value.trim();
+
+      
     } else {
       return 'Can\'t add an empty email';
     }
 
-    return 'Invalid email';
+    //return 'Invalid email';
   }
 
   @override
@@ -438,6 +442,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    //title
                     RichText(
                       text: const TextSpan(
                         text: 'Title',
@@ -514,7 +519,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                           fontWeight: FontWeight.bold,
                           letterSpacing: 0.5,
                         ),
-                        errorText: isEditingTitle ? _validateTitle(currentTitle) : null,
+                        errorText: isEditingTitle ? _validateTitle(currentTitle) : 'null',
                         errorStyle: const TextStyle(
                           fontSize: 12,
                           color: Colors.redAccent,
@@ -929,7 +934,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                   print('End Time: ${DateTime.fromMillisecondsSinceEpoch(endTimeInEpoch)}');
 
                                   if (endTimeInEpoch - startTimeInEpoch > 0) {
-                                    if (_validateTitle(currentTitle) == null) {
+                                    if (_validateTitle(currentTitle) == 'null') {
                                       await calendarClient
                                           .insert(
                                               title: currentTitle,

@@ -108,39 +108,43 @@ class _EditEventScreenState extends State<EditEventScreen> {
   }
 
   String _validateTitle(String value) {
-    if (value != null) {
-      value = value.trim();
-      if (value.isEmpty) {
-        return 'Title can\'t be empty';
-      }
-    } else {
-      return 'Title can\'t be empty';
-    }
-
-    return 'name is empty';
+    assert(value.isNotEmpty);
+    // if (value != 'null') {
+    //   if (value.isEmpty) {
+    //     return 'Title can\'t be empty';
+    //   }else{
+    //   return value = value.trim();
+    //   }
+    // } else if(value == 'null'){
+    //   return 'Title can\'t be empty';
+    // }
+    return value = value.trim();
+    
   }
 
   String _validateEmail(String value) {
-    if (value != null) {
-      value = value.trim();
-
-      if (value.isEmpty) {
-        return 'Can\'t add an empty email';
-      } else {
-        final regex = RegExp(
-            r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
-        final matches = regex.allMatches(value);
-        for (Match match in matches) {
-          if (match.start == 0 && match.end == value.length) {
-            return 'email is empty';
-          }
-        }
-      }
-    } else {
-      return 'Can\'t add an empty email';
-    }
-
-    return 'Invalid email';
+    assert(value.isNotEmpty);
+    return value = value.trim();
+    // if (value != 'null') {
+    //   if (value.isEmpty) {
+    //     return 'Can\'t add an empty email';
+    //   } else {
+    //     final regex = RegExp(
+    //         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
+    //     final matches = regex.allMatches(value);
+    //     for (Match match in matches) {
+    //       if (match.start == 0 && match.end == value.length) {
+    //         return 'email is empty';
+    //       }
+    //     }
+    //     return value = value.trim();
+    //   }
+      
+      
+      
+    // } else {
+    //   return 'Can\'t add an empty email';
+    // }
   }
 
   @override
@@ -604,7 +608,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                         ),
                         errorText: isEditingTitle
                             ? _validateTitle(currentTitle)
-                            : null,
+                            : 'title is empty',
                         errorStyle: const TextStyle(
                           fontSize: 12,
                           color: Colors.redAccent,
@@ -1017,7 +1021,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                       'End Time: ${DateTime.fromMillisecondsSinceEpoch(endTimeInEpoch)}');
 
                                   if (endTimeInEpoch - startTimeInEpoch > 0) {
-                                    if (_validateTitle(currentTitle) == null) {
+                                    if (_validateTitle(currentTitle) != 'null') {
                                       await calendarClient
                                           .modify(
                                               id: eventId,
