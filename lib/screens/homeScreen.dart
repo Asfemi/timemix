@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: ExpandableFab.location,
-      //todo: add google calender events here
+      
       floatingActionButton: ExpandableFab(
         key: key,
         // duration: const Duration(seconds: 1),
