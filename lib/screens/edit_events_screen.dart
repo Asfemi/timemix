@@ -992,10 +992,10 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                 textFocusNodeLocation.unfocus();
                                 textFocusNodeAttendee.unfocus();
 
-                                if (selectedDate != null &&
-                                    selectedStartTime != null &&
-                                    selectedEndTime != null &&
-                                    currentTitle != null) {
+                                if (selectedDate.toString().isNotEmpty &&
+                                    selectedStartTime.toString().isNotEmpty &&
+                                    selectedEndTime.toString().isNotEmpty &&
+                                    currentTitle.toString().isNotEmpty) {
                                   int startTimeInEpoch = DateTime(
                                     selectedDate.year,
                                     selectedDate.month,
