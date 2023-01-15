@@ -1,6 +1,7 @@
 import 'package:Schoolclock/calendar_client.dart';
 import 'package:Schoolclock/constants.dart';
 import 'package:Schoolclock/util/storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:googleapis/calendar/v3.dart' as calendar;
 import 'package:intl/intl.dart';
@@ -104,21 +105,26 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
     }
   }
 
-  String _validateTitle(String value) {
-    if (value != 'null') {
+  String? _validateTitle(String value) {
+    if (value.isNotEmpty) {
+      value = value.trim();
+
       if (value.isEmpty) {
         return 'Title can\'t be empty';
       }
-      return value = value.trim();
+
+      return null;
     } else {
       return 'Title can\'t be empty';
     }
 
-    //return 'null';
+    //return null;
   }
 
-  String _validateEmail(String value) {
-    if (value != 'null') {
+  String? _validateEmail(String value) {
+    if (value.isNotEmpty) {
+      value = value.trim();
+
       if (value.isEmpty) {
         return 'Can\'t add an empty email';
       } else {
@@ -127,17 +133,15 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         final matches = regex.allMatches(value);
         for (Match match in matches) {
           if (match.start == 0 && match.end == value.length) {
-            return 'null';
+            return 'Can\'t add an invalid email';
           }
         }
       }
-
-      return value = value.trim();
     } else {
       return 'Can\'t add an empty email';
     }
 
-    //return 'Invalid email';
+    return null;
   }
 
   @override
@@ -242,52 +246,14 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: InputDecoration(
-                        disabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: CustomColor.sea_blue, width: 1),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: CustomColor.sea_blue, width: 1),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(
-                              color: CustomColor.dark_blue, width: 2),
-                        ),
-                        errorBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: Colors.redAccent, width: 2),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                        contentPadding: const EdgeInsets.only(
-                          left: 16,
-                          bottom: 16,
-                          top: 16,
-                          right: 16,
-                        ),
+                      decoration: kEventTextFieldDecoration.copyWith(
                         hintText: 'eg: September 10, 2020',
-                        hintStyle: TextStyle(
-                          color: Colors.grey.withOpacity(0.6),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.5,
-                        ),
                         errorText:
                             isEditingDate && textControllerDate.text != null
                                 ? textControllerDate.text.isNotEmpty
                                     ? null
                                     : 'Date can\'t be empty'
                                 : null,
-                        errorStyle: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.redAccent,
-                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -323,52 +289,14 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: InputDecoration(
-                        disabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: CustomColor.sea_blue, width: 1),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: CustomColor.sea_blue, width: 1),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(
-                              color: CustomColor.dark_blue, width: 2),
-                        ),
-                        errorBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: Colors.redAccent, width: 2),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                        contentPadding: const EdgeInsets.only(
-                          left: 16,
-                          bottom: 16,
-                          top: 16,
-                          right: 16,
-                        ),
+                      decoration: kEventTextFieldDecoration.copyWith(
                         hintText: 'eg: 09:30 AM',
-                        hintStyle: TextStyle(
-                          color: Colors.grey.withOpacity(0.6),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.5,
-                        ),
                         errorText: isEditingStartTime &&
                                 textControllerStartTime.text != null
                             ? textControllerStartTime.text.isNotEmpty
                                 ? null
                                 : 'Start time can\'t be empty'
                             : null,
-                        errorStyle: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.redAccent,
-                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -404,52 +332,14 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                         fontWeight: FontWeight.bold,
                         letterSpacing: 0.5,
                       ),
-                      decoration: InputDecoration(
-                        disabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: CustomColor.sea_blue, width: 1),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: CustomColor.sea_blue, width: 1),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(
-                              color: CustomColor.dark_blue, width: 2),
-                        ),
-                        errorBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide:
-                              BorderSide(color: Colors.redAccent, width: 2),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                        contentPadding: const EdgeInsets.only(
-                          left: 16,
-                          bottom: 16,
-                          top: 16,
-                          right: 16,
-                        ),
+                      decoration: kEventTextFieldDecoration.copyWith(
                         hintText: 'eg: 11:30 AM',
-                        hintStyle: TextStyle(
-                          color: Colors.grey.withOpacity(0.6),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.5,
-                        ),
                         errorText: isEditingEndTime &&
                                 textControllerEndTime.text != null
                             ? textControllerEndTime.text.isNotEmpty
                                 ? null
                                 : 'End time can\'t be empty'
                             : null,
-                        errorStyle: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.redAccent,
-                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -479,20 +369,20 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                     //title field
                     EventTextField(
                       context: context,
+                      focusNode: textFocusNodeTitle,
+                      focusNode2: textFocusNodeDesc,
+                      controller: textControllerTitle,
                       onchanged: (value) {
                         setState(() {
                           isEditingTitle = true;
                           currentTitle = value;
                         });
                       },
-                      onsubmitted: (value) {
-                        textFocusNodeTitle.unfocus();
-                        FocusScope.of(context).requestFocus(textFocusNodeTitle);
-                      },
                       decoration: kEventTextFieldDecoration.copyWith(
+                        hintText: 'eg: Birthday party of John',
                         errorText: isEditingTitle
                             ? _validateTitle(currentTitle)
-                            : 'null',
+                            : null,
                         errorStyle: const TextStyle(
                           fontSize: 12,
                           color: Colors.redAccent,
@@ -500,6 +390,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    //description
                     RichText(
                       text: const TextSpan(
                         text: 'Description',
@@ -525,28 +416,19 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                     //desription
                     EventTextField(
                       context: context,
-                      focusNode: textFocusNodeTitle,
+                      focusNode: textFocusNodeDesc,
+                      controller: textControllerDesc,
                       onchanged: (value) {
                         setState(() {
                           currentDesc = value;
                         });
                       },
-                      onsubmitted: (value) {
-                        textFocusNodeTitle.unfocus();
-                        FocusScope.of(context).requestFocus(textFocusNodeDesc);
-                      },
                       decoration: kEventTextFieldDecoration.copyWith(
                         hintText: 'eg: Some information about this event',
-                        errorText: isEditingTitle
-                            ? _validateTitle(currentTitle)
-                            : 'null',
-                        errorStyle: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.redAccent,
-                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
+                    //location
                     RichText(
                       text: const TextSpan(
                         text: 'Location',
@@ -569,24 +451,22 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    //list of attendees
+                    //locationb
                     EventTextField(
                       context: context,
+                      focusNode: textFocusNodeLocation,
+                      controller: textControllerLocation,
                       onchanged: (value) {
                         setState(() {
                           currentLocation = value;
                         });
-                      },
-                      onsubmitted: (value) {
-                        textFocusNodeTitle.unfocus();
-                        FocusScope.of(context)
-                            .requestFocus(textFocusNodeAttendee);
                       },
                       decoration: kEventTextFieldDecoration.copyWith(
                         hintText: 'Place of the event',
                       ),
                     ),
                     const SizedBox(height: 10),
+                    //attendees
                     RichText(
                       text: const TextSpan(
                         text: 'Attendees',
@@ -823,10 +703,10 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                 textFocusNodeLocation.unfocus();
                                 textFocusNodeAttendee.unfocus();
 
-                                if (selectedDate != null &&
-                                    selectedStartTime != null &&
-                                    selectedEndTime != null &&
-                                    currentTitle != null) {
+                                if (selectedDate.toString().isNotEmpty &&
+                                    selectedStartTime.toString().isNotEmpty &&
+                                    selectedEndTime.toString().isNotEmpty &&
+                                    currentTitle.toString().isNotEmpty) {
                                   int startTimeInEpoch = DateTime(
                                     selectedDate.year,
                                     selectedDate.month,
@@ -843,17 +723,22 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                     selectedEndTime.minute,
                                   ).millisecondsSinceEpoch;
 
-                                  print(
-                                      'DIFFERENCE: ${endTimeInEpoch - startTimeInEpoch}');
+                                  if (kDebugMode) {
+                                    print(
+                                        'DIFFERENCE: ${endTimeInEpoch - startTimeInEpoch}');
+                                  }
 
-                                  print(
-                                      'Start Time: ${DateTime.fromMillisecondsSinceEpoch(startTimeInEpoch)}');
-                                  print(
-                                      'End Time: ${DateTime.fromMillisecondsSinceEpoch(endTimeInEpoch)}');
+                                  if (kDebugMode) {
+                                    print(
+                                        'Start Time: ${DateTime.fromMillisecondsSinceEpoch(startTimeInEpoch)}');
+                                  }
+                                  if (kDebugMode) {
+                                    print(
+                                        'End Time: ${DateTime.fromMillisecondsSinceEpoch(endTimeInEpoch)}');
+                                  }
 
                                   if (endTimeInEpoch - startTimeInEpoch > 0) {
-                                    if (_validateTitle(currentTitle) ==
-                                        'null') {
+                                    if (_validateTitle(currentTitle) == null) {
                                       await calendarClient
                                           .insert(
                                               title: currentTitle,
@@ -878,10 +763,11 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
 
                                         for (int i = 0;
                                             i < attendeeEmails.length;
-                                            i++)
+                                            i++) {
                                           emails.add(attendeeEmails[i]
                                               .email
                                               .toString());
+                                        }
 
                                         EventInfo eventInfo = EventInfo(
                                           id: eventId.toString(),
@@ -1006,8 +892,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       void Function(String)? onsubmitted,
       void Function(String)? onchanged,
       FocusNode? focusNode,
-
-      }) {
+      FocusNode? focusNode2,
+      TextEditingController? controller}) {
     return TextField(
         enabled: true,
         cursorColor: CustomColor.sea_blue,
@@ -1016,7 +902,10 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         textCapitalization: TextCapitalization.sentences,
         textInputAction: TextInputAction.next,
         onChanged: onchanged,
-        onSubmitted: onsubmitted,
+        onSubmitted: (value) {
+          focusNode?.unfocus();
+          FocusScope.of(context).requestFocus(focusNode2);
+        },
         style: const TextStyle(
           color: Colors.black87,
           fontWeight: FontWeight.bold,
