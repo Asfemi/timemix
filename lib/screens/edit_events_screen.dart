@@ -1026,7 +1026,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                           .modify(
                                               id: eventId,
                                               title: currentTitle,
-                                              description: currentDesc ?? '',
+                                              description: currentDesc,
                                               location: currentLocation,
                                               attendeeEmailList: attendeeEmails,
                                               shouldNotifyAttendees:
@@ -1056,7 +1056,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                                         EventInfo eventInfo = EventInfo(
                                           id: eventId.toString(),
                                           name: currentTitle,
-                                          description: currentDesc ?? '',
+                                          description: currentDesc,
                                           location: currentLocation,
                                           link: eventLink.toString(),
                                           attendeeEmails: emails,
