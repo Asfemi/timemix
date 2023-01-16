@@ -10,7 +10,7 @@ import '../util/storage.dart';
 class EditEventScreen extends StatefulWidget {
   final EventInfo event;
 
-  EditEventScreen({required this.event});
+  const EditEventScreen({super.key, required this.event});
   @override
   State<EditEventScreen> createState() => _EditEventScreenState();
 }
@@ -36,7 +36,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
   TimeOfDay selectedStartTime = TimeOfDay.now();
   TimeOfDay selectedEndTime = TimeOfDay.now();
 
-  late String eventId;
+  late String? eventId;
   late String currentTitle;
   late String currentDesc;
   late String currentLocation;

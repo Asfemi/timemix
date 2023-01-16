@@ -8,7 +8,7 @@ class CalendarClient {
   static var calendar;
 
   // For creating a new calendar event
-  Future<Map<String, String>> insert({
+  Future<Map<String?, String?>> insert({
     required String title,
     required String description,
     required String location,
@@ -18,7 +18,7 @@ class CalendarClient {
     required DateTime startTime,
     required DateTime endTime,
   }) async {
-    late Map<String, String> eventData;
+    late Map<String?, String?> eventData;
 
     // If the account has multiple calendars, then select the "primary" one
     String calendarId = "primary";
@@ -58,7 +58,7 @@ class CalendarClient {
         print("Event Status: ${value.status}");
         if (value.status == "confirmed") {
           late String joiningLink;
-          String eventId;
+          String? eventId;
 
           eventId = value.id;
 
@@ -89,7 +89,7 @@ class CalendarClient {
 
   // For patching an already-created calendar event
   Future<Map<String, String>> modify({
-    required String id,
+    required String? id,
     required String title,
     required String description,
     required String location,
@@ -158,7 +158,7 @@ class CalendarClient {
   }
 
   // For deleting a calendar event
-  Future<void> delete(String eventId, bool shouldNotify) async {
+  Future<void> delete(String? eventId, bool shouldNotify) async {
     String calendarId = "primary";
 
   try {

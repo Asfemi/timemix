@@ -48,7 +48,7 @@ class Storage {
 }
 
 
-  Future<void> deleteEvent({required String id}) async {
+  Future<void> deleteEvent({required String? id}) async {
   DocumentReference documentReferencer = documentReference.collection('events').doc(id);
 
   await documentReferencer.delete().catchError((e) => print(e));

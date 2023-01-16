@@ -197,7 +197,7 @@ class HomeScreen extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                                       child: Text(
-                                        event.link,
+                                        event.link.toString(),
                                         style: TextStyle(
                                           color: Colors.blueGrey.withOpacity(0.5),
                                           fontWeight: FontWeight.bold,
