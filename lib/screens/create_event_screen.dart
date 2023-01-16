@@ -164,6 +164,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -695,11 +696,19 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                         onPressed: isDataStorageInProgress
                             ? null
                             : () async {
+                              print('onpress to create the event has been registered');
+                              //stage one
+                              //isDataStorageInProgress is initially false
+                              
                                 setState(() {
+                                  //stage two
+                                  //reverts isDataStorageInProgress to true
+                                  //to make the onpress null
                                   isErrorTime = false;
                                   isDataStorageInProgress = true;
+                                  print('data storage  has gotten to stage two');
                                 });
-
+                                //this unfocus all the fields
                                 textFocusNodeTitle.unfocus();
                                 textFocusNodeDesc.unfocus();
                                 textFocusNodeLocation.unfocus();
@@ -708,7 +717,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                 if (selectedDate.toString().isNotEmpty &&
                                     selectedStartTime.toString().isNotEmpty &&
                                     selectedEndTime.toString().isNotEmpty &&
-                                    currentTitle.toString().isNotEmpty) {
+                                    currentTitle.isNotEmpty) {
                                   int startTimeInEpoch = DateTime(
                                     selectedDate.year,
                                     selectedDate.month,
@@ -741,42 +750,36 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
 
                                   if (endTimeInEpoch - startTimeInEpoch > 0) {
                                     if (_validateTitle(currentTitle) == null) {
+                                      print('currentTitle has returned null as it suppose to');
                                       await calendarClient
                                           .insert(
                                               title: currentTitle,
-                                              description: currentDesc ?? '',
+                                              description: currentDesc,
                                               location: currentLocation,
                                               attendeeEmailList: attendeeEmails,
-                                              shouldNotifyAttendees:
-                                                  shouldNofityAttendees,
-                                              hasConferenceSupport:
-                                                  hasConferenceSupport,
-                                              startTime: DateTime
-                                                  .fromMillisecondsSinceEpoch(
-                                                      startTimeInEpoch),
-                                              endTime: DateTime
-                                                  .fromMillisecondsSinceEpoch(
-                                                      endTimeInEpoch))
+                                              shouldNotifyAttendees: shouldNofityAttendees,
+                                              hasConferenceSupport: hasConferenceSupport,
+                                              startTime: DateTime.fromMillisecondsSinceEpoch(startTimeInEpoch),
+                                              endTime: DateTime.fromMillisecondsSinceEpoch(endTimeInEpoch))
                                           .then((eventData) async {
+                                             print('data is being insert in the calendarclient method');
                                         String? eventId = eventData['id'];
                                         String? eventLink = eventData['link'];
 
-                                        List<String> emails = [];
+                                        List<String?> emails = [];
 
-                                        for (int i = 0;
-                                            i < attendeeEmails.length;
-                                            i++) {
-                                          emails.add(attendeeEmails[i]
-                                              .email
-                                              .toString());
+                                        for (int i = 0;i < attendeeEmails.length; i++) 
+                                            {
+                                              emails.add(attendeeEmails[i].email);
                                         }
-
+                                         print('emails, eventid, eventlink has been set');
+//todo: create a function like validate string to output an empty string if the user doesnt add anythin in the description
                                         EventInfo eventInfo = EventInfo(
-                                          id: eventId.toString(),
+                                          id: eventId,
                                           name: currentTitle,
-                                          description: currentDesc ?? '',
+                                          description: currentDesc,
                                           location: currentLocation,
-                                          link: eventLink.toString(),
+                                          link: eventLink,
                                           attendeeEmails: emails,
                                           shouldNotifyAttendees:
                                               shouldNofityAttendees,
@@ -785,13 +788,12 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                           startTimeInEpoch: startTimeInEpoch,
                                           endTimeInEpoch: endTimeInEpoch,
                                         );
-
+                                         print('event info has been set');
+                                          print('and now the data is being set to firebase');
                                         await storage
-                                            .storeEventData(eventInfo)
-                                            .whenComplete(() =>
-                                                Navigator.of(context).pop())
+                                            .storeEventData(eventInfo).whenComplete(() => Navigator.of(context).pop())
                                             .catchError(
-                                              (e) => print(e),
+                                              (e) => ErrorWidget(e, size),
                                             );
                                       }).catchError(
                                         (e) => print(e),
@@ -802,18 +804,21 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                       });
                                     } else {
                                       setState(() {
+                                         print('invalid title please fix');
                                         isEditingTitle = true;
                                         isEditingLink = true;
                                       });
                                     }
                                   } else {
                                     setState(() {
+                                      print('Invalid time! Please use a proper start and end time');
                                       isErrorTime = true;
                                       errorString =
                                           'Invalid time! Please use a proper start and end time';
                                     });
                                   }
                                 } else {
+                                   print('selected date starttime endtime and title are empty');
                                   setState(() {
                                     isEditingDate = true;
                                     isEditingStartTime = true;
@@ -828,6 +833,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                 });
                               },
                         style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
                           // onPrimary: Colors.black87,
                           //primary: Colors.grey[300],
                           minimumSize: const Size(88, 36),
@@ -915,4 +921,27 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         ),
         decoration: decoration);
   }
+   
+   Widget ErrorWidget(String errorText, Size size){
+    return Card(
+      elevation: 5,
+      child: Container(
+        height: size.height * 0.25,
+        width: size.width * 0.85,
+        padding: EdgeInsets.all(10),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          
+          ),
+          child: Center(child: Text(errorText, style: const TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0.5,
+                      ),)),
+      ),
+    );
+   }
 }
+
+  
