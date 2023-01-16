@@ -900,7 +900,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         enabled: true,
         cursorColor: CustomColor.sea_blue,
         focusNode: focusNode,
-        controller: textControllerTitle,
+        controller: controller,
         textCapitalization: TextCapitalization.sentences,
         textInputAction: TextInputAction.next,
         onChanged: onchanged,
