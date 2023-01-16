@@ -417,6 +417,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                     EventTextField(
                       context: context,
                       focusNode: textFocusNodeDesc,
+                      focusNode2: textFocusNodeLocation,
                       controller: textControllerDesc,
                       onchanged: (value) {
                         setState(() {
@@ -424,7 +425,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                         });
                       },
                       decoration: kEventTextFieldDecoration.copyWith(
-                        hintText: 'eg: Some information about this event',
+                        hintText: 'eg: where this event would hold',
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -455,6 +456,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                     EventTextField(
                       context: context,
                       focusNode: textFocusNodeLocation,
+                      focusNode2: textFocusNodeAttendee,
                       controller: textControllerLocation,
                       onchanged: (value) {
                         setState(() {
