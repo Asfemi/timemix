@@ -16,7 +16,7 @@ class CreateEventScreen extends StatefulWidget {
 
 class _CreateEventScreenState extends State<CreateEventScreen> {
   Storage storage = Storage();
-  CalendarClient calendarClient = CalendarClient();
+  late CalendarClient calendarClient = CalendarClient();
 
   late TextEditingController textControllerDate;
   late TextEditingController textControllerStartTime;
@@ -133,7 +133,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         final matches = regex.allMatches(value);
         for (Match match in matches) {
           if (match.start == 0 && match.end == value.length) {
-            return 'Can\'t add an invalid email';
+            return null;
           }
         }
       }
