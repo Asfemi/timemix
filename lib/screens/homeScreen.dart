@@ -21,8 +21,6 @@ class HomeScreen extends StatelessWidget {
   //TODO: get illustrations for the pages
   //todo: trim the ui
   //todo: make the ui adapt the functionalities
-  //todo: integrate the already setup api
-  //todo: create a proper support email
 
   @override
   Widget build(BuildContext context) {
