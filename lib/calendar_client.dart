@@ -18,7 +18,7 @@ class CalendarClient {
     required DateTime startTime,
     required DateTime endTime,
   }) async {
-    late Map<String?, String?> eventData;
+    Map<String?, String?> eventData = {'id': title, 'link': location};
 
     // If the account has multiple calendars, then select the "primary" one
     String calendarId = "primary";
