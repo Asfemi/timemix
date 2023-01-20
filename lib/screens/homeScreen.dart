@@ -81,8 +81,8 @@ class HomeScreen extends StatelessWidget {
             child: const Icon(Icons.edit),
             onPressed: () {
               
-              //TODO: create event
-              //todo: add users to event
+          
+              
               //todo: edit event
               //todo: delete event
               //todo: set notification type.

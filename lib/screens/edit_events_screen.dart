@@ -107,44 +107,43 @@ class _EditEventScreenState extends State<EditEventScreen> {
     }
   }
 
-  String _validateTitle(String value) {
-    assert(value.isNotEmpty);
-    // if (value != 'null') {
-    //   if (value.isEmpty) {
-    //     return 'Title can\'t be empty';
-    //   }else{
-    //   return value = value.trim();
-    //   }
-    // } else if(value == 'null'){
-    //   return 'Title can\'t be empty';
-    // }
-    return value = value.trim();
-    
+String? _validateTitle(String value) {
+    if (value.isNotEmpty) {
+      value = value.trim();
+
+      if (value.isEmpty) {
+        return 'Title can\'t be empty';
+      }
+
+      return null;
+    } else {
+      return 'Title can\'t be empty';
+    }
+
+    //return null;
   }
 
-  String _validateEmail(String value) {
-    assert(value.isNotEmpty);
-    return value = value.trim();
-    // if (value != 'null') {
-    //   if (value.isEmpty) {
-    //     return 'Can\'t add an empty email';
-    //   } else {
-    //     final regex = RegExp(
-    //         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
-    //     final matches = regex.allMatches(value);
-    //     for (Match match in matches) {
-    //       if (match.start == 0 && match.end == value.length) {
-    //         return 'email is empty';
-    //       }
-    //     }
-    //     return value = value.trim();
-    //   }
-      
-      
-      
-    // } else {
-    //   return 'Can\'t add an empty email';
-    // }
+  String? _validateEmail(String value) {
+    if (value.isNotEmpty) {
+      value = value.trim();
+
+      if (value.isEmpty) {
+        return 'Can\'t add an empty email';
+      } else {
+        final regex = RegExp(
+            r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
+        final matches = regex.allMatches(value);
+        for (Match match in matches) {
+          if (match.start == 0 && match.end == value.length) {
+            return null;
+          }
+        }
+      }
+    } else {
+      return 'Can\'t add an empty email';
+    }
+
+    return null;
   }
 
   @override

@@ -19,7 +19,9 @@ class CalendarClient {
     required DateTime endTime,
   }) async {
     Map<String?, String?> eventData = {'id': title, 'link': location};
-
+    if (kDebugMode) {
+      print('inserting event started');
+    }
     // If the account has multiple calendars, then select the "primary" one
     String calendarId = "primary";
     Event event = Event();
@@ -39,12 +41,12 @@ class CalendarClient {
       event.conferenceData = conferenceData;
     }
 
-    EventDateTime start = new EventDateTime();
+    EventDateTime start = EventDateTime();
     start.dateTime = startTime;
     start.timeZone = "GMT+05:30";
     event.start = start;
 
-    EventDateTime end = new EventDateTime();
+    EventDateTime end = EventDateTime();
     end.timeZone = "GMT+05:30";
     end.dateTime = endTime;
     event.end = end;
@@ -55,7 +57,9 @@ class CalendarClient {
               conferenceDataVersion: hasConferenceSupport ? 1 : 0,
               sendUpdates: shouldNotifyAttendees ? "all" : "none")
           .then((value) {
-        print("Event Status: ${value.status}");
+        if (kDebugMode) {
+          print("Event Status: ${value.status}");
+        }
         if (value.status == "confirmed") {
           late String joiningLink;
           String? eventId;
@@ -101,6 +105,9 @@ class CalendarClient {
   }) async {
 
     late Map<String, String> eventData;
+    if (kDebugMode) {
+      print('modify event started');
+    }
 
   String calendarId = "primary";
   Event event = Event();
@@ -110,12 +117,12 @@ class CalendarClient {
   event.attendees = attendeeEmailList;
   event.location = location;
 
-  EventDateTime start = new EventDateTime();
+  EventDateTime start = EventDateTime();
   start.dateTime = startTime;
   start.timeZone = "GMT+05:30";
   event.start = start;
 
-  EventDateTime end = new EventDateTime();
+  EventDateTime end = EventDateTime();
   end.timeZone = "GMT+05:30";
   end.dateTime = endTime;
   event.end = end;
@@ -125,7 +132,9 @@ class CalendarClient {
         .patch(event, calendarId, id,
             conferenceDataVersion: hasConferenceSupport ? 1 : 0, sendUpdates: shouldNotifyAttendees ? "all" : "none")
         .then((value) {
-      print("Event Status: ${value.status}");
+      if (kDebugMode) {
+        print("Event Status: ${value.status}");
+      }
       if (value.status == "confirmed") {
         late String joiningLink;
         late String eventId;
@@ -152,13 +161,18 @@ class CalendarClient {
       print('Error updating event $e');
     }
   }
-
+   if (kDebugMode) {
+      print('returing event data');
+    }
   return eventData;
 
   }
 
   // For deleting a calendar event
   Future<void> delete(String? eventId, bool shouldNotify) async {
+    if (kDebugMode) {
+      print('delete event started');
+    }
     String calendarId = "primary";
 
   try {
