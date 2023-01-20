@@ -76,16 +76,19 @@ class CalendarClient {
           if (kDebugMode) {
             print('Event added to Google Calendar');
           }
+          return eventData;
         } else {
           if (kDebugMode) {
             print("Unable to add event to Google Calendar");
           }
+          return eventData;
         }
       });
     } catch (e) {
       if (kDebugMode) {
         print('Error creating event $e');
       }
+      return eventData;
     }
 
     return eventData;
