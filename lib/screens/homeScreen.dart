@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
           
               
               //todo: edit event
-              //todo: delete event
+              
               //todo: set notification type.
               Navigator.of(context).push(
               MaterialPageRoute(builder: ((context) =>  CreateEventScreen())));
@@ -265,7 +265,7 @@ class HomeScreen extends StatelessWidget {
                   );
                 }
               }
-              //todo testing time
+              
               return const Center(
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
