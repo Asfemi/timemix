@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
       const PlaceaholderContainer(),
     ];
     return Scaffold(
-      backgroundColor: CustomColor.grey,
+      backgroundColor: Colors.white,
       drawer: HomeDrawer(user: user),
       appBar: AppBar(
         elevation: 0,
@@ -277,76 +277,15 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       
-      // body: CustomScrollView(
-      //   slivers: <Widget>[
-      //     SliverAppBar(
-      //       snap: false,
-      //       pinned: true,
-      //       floating: false,
-      //       flexibleSpace: FlexibleSpaceBar(
-      //           centerTitle: true,
-      //           title: const Text("hii",
-      //               style: TextStyle(
-      //                 color: Colors.white,
-      //                 fontSize: 16.0,
-      //               )),
-      //           background: Container(
-      //             clipBehavior: Clip.hardEdge,
-      //             decoration: const BoxDecoration(
-      //                 borderRadius: BorderRadius.only(
-      //                     bottomLeft: Radius.circular(40),
-      //                     bottomRight: Radius.circular(40))),
-      //             child: Image.asset(
-      //               //"lib/assets/nathan-dumlao-5Hl5reICevY-unsplash.jpg",
-      //               "lib/assets/1.jpg",
-      //               fit: BoxFit.cover,
-      //             ),
-      //           )),
-      //       expandedHeight: size.height / 2,
-      //       backgroundColor: CustomColors.grey,
-      //       leading: FractionallySizedBox(
-      //         widthFactor: 0.6,
-      //         heightFactor: 0.6,
-      //         //constraints: BoxConstraints(maxHeight: 4, maxWidth: 4),
-      //         child: Container(
-      //           padding: const EdgeInsets.only(
-      //             left: 2,
-      //             right: 2,
-      //             top: 2,
-      //             bottom: 2,
-      //           ),
-      //           // height: 5,
-      //           // width: 5,
-      //           decoration: BoxDecoration(
-      //             shape: BoxShape.circle,
-      //             color: CustomColors.grey,
-      //           ),
-      //           child: const Icon(
-      //             Icons.menu,
-      //             color: Colors.blue,
-      //           ),
-      //         ),
-      //       ),
-      //       actions: const <Widget>[
-             
-      //      ],
-            
-      //     ),
-      //     SliverList(
-      //       delegate: SliverChildBuilderDelegate(
-      //         (context, index) => 
-      //         const Padding(
-      //           padding: EdgeInsets.only(
-      //           left: 16.0,
-      //           right: 16.0,
-      //           ),
-      //         ),
-      //        // homeWidgets[index],
-      //         childCount: homeWidgets.length,
-      //       ), //SliverChildBuildDelegate
-      //     )
-      //   ],
-      // ),
+      //TODO: what i have to do moving forword
+      //research on google events, task and other calendar functions
+      //ask gpt on how to display the event in the google calender itself
+      //ask gpt on how to delete the task after the event finishes 
+      //ask gpt om how to set it to be reoccurring
+      //set up the notifications
+      //set up the time table look
+      //change up the ui
+      // Todo: this should be troublesome
       );
   }
 }
