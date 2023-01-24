@@ -18,7 +18,7 @@ class CalendarClient {
     required DateTime startTime,
     required DateTime endTime,
   }) async {
-    Map<String?, String?> eventData = {'id': title, 'link': location};
+    late Map<String?, String?> eventData = {'id': '', 'link': ''};
     if (kDebugMode) {
       print('inserting event started');
     }
@@ -77,6 +77,7 @@ class CalendarClient {
             print('Event added to Google Calendar');
           }
           return eventData;
+       
         } else {
           if (kDebugMode) {
             print("Unable to add event to Google Calendar");
