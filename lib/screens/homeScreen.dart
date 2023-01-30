@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   static String id = 'home';
-  //todo: restructure the entire code
   //TODO: get illustrations for the pages
   //todo: trim the ui
   //todo: make the ui adapt the functionalities
@@ -29,10 +28,7 @@ class HomeScreen extends StatelessWidget {
 
     User? user = FirebaseAuth.instance.currentUser;
    //todo: look into 'app check' to avoid excess billings
-    List<Widget> homeWidgets = [
-      const PlaceaholderContainer(),
-      const PlaceaholderContainer(),
-    ];
+    
     return Scaffold(
       backgroundColor: Colors.white,
       drawer: HomeDrawer(user: user),
