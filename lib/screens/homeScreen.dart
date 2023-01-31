@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
           
               
               //todo: edit event
-              
+              //brainstorm on the proper app logic
               //todo: set notification type.
               Navigator.of(context).push(
               MaterialPageRoute(builder: ((context) =>  CreateEventScreen())));
