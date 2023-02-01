@@ -281,7 +281,6 @@ class HomeScreen extends StatelessWidget {
       //s...et up the notifications
       //set up the time table look
       //change up the ui
-      // Todo: this should be troublesome
       );
   }
 }
