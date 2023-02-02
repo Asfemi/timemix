@@ -274,7 +274,7 @@ class HomeScreen extends StatelessWidget {
       ),
       
       //TODO: what i have to do moving forword
-      //...research on google events, task and other calendar functions
+      
       //ask gpt on how to display the event in the google calender itself
       //ask gpt on how to delete the task after the event finishes 
       //ask gpt om how to set it to be reoccurring
