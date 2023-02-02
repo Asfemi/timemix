@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   static String id = 'home';
   //TODO: get illustrations for the pages
-  //todo: trim the ui
+
   //todo: make the ui adapt the functionalities
 
   @override
