@@ -2,9 +2,9 @@
 //
 // //TODO: look up functionalies from chiamaka's app
 //
-// //TODO: create events
+
 //
-// //TODO: add users to event
+
 //
 // //TODO: set up calender event picker
 //
