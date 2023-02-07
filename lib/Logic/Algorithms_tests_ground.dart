@@ -36,8 +36,8 @@ Future<Scaffold> displayList(String listId, BuildContext context) async {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(userSnapshot['name'], style: Theme.of(context).textTheme.headline6),
-              Text(userSnapshot['email'], style: Theme.of(context).textTheme.subtitle1),
+              Text(userSnapshot['name'], style: Theme.of(context).textTheme.titleLarge),
+              Text(userSnapshot['email'], style: Theme.of(context).textTheme.titleMedium),
             ],
           ),
         ),
