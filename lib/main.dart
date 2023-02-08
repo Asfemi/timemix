@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-
-
 import 'package:Schoolclock/constants.dart';
 import 'package:Schoolclock/screens/auth/google_SignIn_Screen.dart';
 import 'package:Schoolclock/screens/splashScreen.dart';

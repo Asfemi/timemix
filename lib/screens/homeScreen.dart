@@ -81,6 +81,7 @@ class HomeScreen extends StatelessWidget {
               
               //todo: edit event
               //brainstorm on the proper app logic
+              //look into using provider and change notifier to handle the state of the app
               //todo: set notification type.
               Navigator.of(context).push(
               MaterialPageRoute(builder: ((context) =>  CreateEventScreen())));
@@ -275,12 +276,14 @@ class HomeScreen extends StatelessWidget {
       
       //TODO: what i have to do moving forword
       
+      //look into firebase and resolve the timeout issue
       //ask gpt on how to display the event in the google calender itself
       //ask gpt on how to delete the task after the event finishes 
       //ask gpt om how to set it to be reoccurring
       //s...et up the notifications
       //set up the time table look
       //change up the ui
+
       );
   }
 }
