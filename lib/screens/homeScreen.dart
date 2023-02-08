@@ -275,7 +275,7 @@ class HomeScreen extends StatelessWidget {
       ),
       
       //TODO: what i have to do moving forword
-      
+      // ctrl+shift+p to open adb commands
       //look into firebase and resolve the timeout issue
       //ask gpt on how to display the event in the google calender itself
       //ask gpt on how to delete the task after the event finishes 
