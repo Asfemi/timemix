@@ -280,7 +280,7 @@ class HomeScreen extends StatelessWidget {
       //ask gpt on how to display the event in the google calender itself
       //ask gpt on how to delete the task after the event finishes 
       //ask gpt om how to set it to be reoccurring
-      //s...et up the notifications
+      //set up the notifications
       //set up the time table look
       //change up the ui
 
