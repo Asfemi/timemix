@@ -707,7 +707,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                   //to make the onpress null
                                   isErrorTime = false;
                                   isDataStorageInProgress = true;
-                                  print(
+                                   log(
                                       'data storage  has gotten to stage two');
                                 });
                                 //this unfocus all the fields
@@ -752,7 +752,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
 
                                   if (endTimeInEpoch - startTimeInEpoch > 0) {
                                     if (_validateTitle(currentTitle) == null) {
-                                      print(
+                                      log(
                                           'currentTitle has returned null as it suppose to');
                                       await calendarClient
                                           .insert(
@@ -771,7 +771,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                                   .fromMillisecondsSinceEpoch(
                                                       endTimeInEpoch))
                                           .then((eventData) async {
-                                        print(
+                                        log(
                                             'data is being insert in the calendarclient method');
                                         String? eventId = eventData['id'];
                                         String? eventLink = eventData['link'];
@@ -800,8 +800,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                           startTimeInEpoch: startTimeInEpoch,
                                           endTimeInEpoch: endTimeInEpoch,
                                         );
-                                        print('event info has been set');
-                                        print(
+                                      log('event info has been set');
+                                        log(
                                             'and now the data is being set to firebase');
                                         await storage
                                             .storeEventData(eventInfo)
@@ -819,14 +819,14 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                       });
                                     } else {
                                       setState(() {
-                                        print('invalid title please fix');
+                                        log('invalid title please fix');
                                         isEditingTitle = true;
                                         isEditingLink = true;
                                       });
                                     }
                                   } else {
                                     setState(() {
-                                      print(
+                                      log(
                                           'Invalid time! Please use a proper start and end time');
                                       isErrorTime = true;
                                       errorString =
@@ -834,7 +834,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                     });
                                   }
                                 } else {
-                                  print(
+                                   log(
                                       'selected date starttime endtime and title are empty');
                                   setState(() {
                                     isEditingDate = true;
