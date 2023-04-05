@@ -195,7 +195,7 @@ class HomeScreen extends StatelessWidget {
                                         event.link.toString(),
                                         style: TextStyle(
                                           color: Colors.blueGrey.withOpacity(0.5),
-                                          fontWeight: FontWeight.bold,
+                                         fontWeight: FontWeight.bold,
                                           fontSize: 16,
                                           letterSpacing: 0.5,
                                         ),
