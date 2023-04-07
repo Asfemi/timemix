@@ -81,7 +81,8 @@ class HomeScreen extends StatelessWidget {
               
               //todo: edit event
               //brainstorm on the proper app logic
-              //look into using provider and change notifier to handle the state of the app
+              //look into using provider and change notifier to handle the state of the ap
+              //i have looked into provider now, bloc in next
               //todo: set notification type.
               Navigator.of(context).push(
               MaterialPageRoute(builder: ((context) =>  CreateEventScreen())));
