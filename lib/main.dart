@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:Schoolclock/constants.dart';
 import 'package:Schoolclock/screens/auth/google_SignIn_Screen.dart';
@@ -8,10 +10,13 @@ import 'screens/homeScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
-
-Future<void> main() async {
+//Future<void> 
+main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  if (!Platform.isWindows){
+    await Firebase.initializeApp();
+  }
+  
   runApp(MyApp());
 }
 
